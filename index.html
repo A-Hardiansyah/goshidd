@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SPAREPART GOGOMALL</title>
 
-<link rel="icon" type="image/png" href="VRM.png">
+<link rel="icon" type="image/png" href="fukk.png">
 
 <!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@ body{
     font-family:'Montserrat',sans-serif;
     background:url('bgperpus.png') no-repeat center center fixed;
     background-size:cover;
-    color:white;
+    color:rgb(96, 88, 88);
     text-align:center;
     padding:20px;
 }
@@ -31,8 +31,8 @@ body{
     margin:auto;
 
     box-shadow:
-        0 8px 20px rgba(255,0,0,0.35),
-        0 0 35px rgba(106,13,173,0.6);
+        0 8px 20px rgba(248, 247, 247, 0.966),
+        0 0 35px rgb(96, 88, 88);
 }
 
 /* ===== TITLE ===== */
@@ -65,7 +65,7 @@ table{
 }
 
 thead{
-    background:#6a0dad;
+    background:rgb(96, 88, 88);
     color:white;
 }
 
@@ -92,16 +92,16 @@ tbody tr:hover{
     display:inline-block;
     margin-top:20px;
     padding:12px 25px;
-    background:#6a0dad;
+    background:rgb(96, 88, 88);
     color:white;
     text-decoration:none;
     border-radius:10px;
     font-weight:bold;
-    box-shadow:0 6px #4b0082;
+    box-shadow:0 6px rgb(96, 88, 88);
 }
 
 .btn:hover{
-    background:#7d27c1;
+    background:rgb(96, 88, 88);
     transform:scale(1.05);
 }
 
@@ -131,98 +131,275 @@ tbody tr:hover{
 <th>NO</th>
 <th>KODE SPAREPART</th>
 <th>NAMA SPAREPART</th>
-<th>AREA</th>
+<th>QTY</th>
 </tr>
 </thead>
 
 <tbody id="stokBody"></tbody>
 </table>
 
-</div>
-
-<a href="index.html" class="btn">⬅ Kembali</a>
-
-</div>
-
 <script>
 
 /* ===== DATA SPAREPART ===== */
 const spareparts = [
-{kode:"ZDRHP.LB", nama:"LITHIUM BATTERY DR HI PLUS", qty:9},
-{kode:"ZDRU.CIW", nama:"CABLE INTRANASAL WHITE", qty:20},
-{kode:"ZDRHP.R", nama:"RESISTANCE HI PLUS", qty:30},
-{kode:"ZDRHP.LPCB", nama:"LASER BOARD FOR HI-PLUS", qty:63},
-{kode:"ZDRHP.TDLS", nama:"TRANSPARANT LENS OF DISPLAY SCREEN OF HI-PLUS", qty:25},
-{kode:"ZDRHP.CNEW", nama:"CHARGER + USB CABLE DR LASER HIPLUS NEW", qty:-1},
-{kode:"ZDRPN.SLB", nama:"STICKY LED FOR PERFECT 10", qty:19},
-{kode:"ZDR.BTP10", nama:"BUTTON DR LASER PERFECT 10", qty:23},
-{kode:"ZDRL.C47UF", nama:"ELEKTROLIT CONDENSATOR 47UF", qty:8},
-{kode:"ZDRHP.TN", nama:"THE NEEDLE DR HI PLUS", qty:10},
-{kode:"ZDRPN.LPCB", nama:"LASER BOARD FOR PERFECT 10", qty:9},
-{kode:"ZDR.MBP10", nama:"MAIN BOARD (MESIN UTAMA/MESIN A) DR LASER PERFECT 10", qty:30},
-{kode:"ZDR.LCDP10N", nama:"LCD DR LASER PERFECT 10 NEW", qty:20},
-{kode:"ZDRPN.LB", nama:"LITHIUM BATTERY DR LASER PERFECT 10 NEW", qty:24},
-{kode:"ZDRPN.TLDS", nama:"TRANSPARANT LENS OF DISPLAY SCREEN", qty:48},
-{kode:"ZDRS.SFS", nama:"SCREW FOR DR LASER SUPREME", qty:100},
-{kode:"ZDRS.USBC", nama:"USB CABLE TYPE C FOR DR LASER SUPREME", qty:9},
-{kode:"ZDRS.A", nama:"ADAPTOR FOR DR LASER SUPREME", qty:8},
-{kode:"ZLMB.ADTR", nama:"ADAPTOR FOR LUMBAR", qty:9},
-{kode:"ZDRS.LCB", nama:"LASER CIRUIT BOARD FOR DR LASER SUPREME", qty:20},
-{kode:"ZDRS.MCB", nama:"MAIN CIRCUIT BOARD FOR DR LASER SUPREME", qty:9},
-{kode:"ZDRS.SPB", nama:"SMD PUSH BUTTON FOR DR LASER SUPREME", qty:8},
-{kode:"ZCTD.CLIST", nama:"CONTROL LIST CERVICAL", qty:10},
-{kode:"ZCTD.CRB", nama:"CONTROL RUBBER BUTTON CERVICAL", qty:10},
-{kode:"ZCTD.SFM", nama:"SUPPORT FRAME CERVICAL", qty:3},
-{kode:"ZCTD.UCOV", nama:"UPPER CASE CERVICAL", qty:3},
-{kode:"ZALD.LB", nama:"LITHIUM BATTERY FOR ULTIMATE", qty:10},
-{kode:"ZALU.A", nama:"ADAPTOR FOR ACULASER", qty:28},
-{kode:"ZALU.USBC", nama:"USB CABLE C TYPE FOR ACULASER", qty:0},
-{kode:"ZALU.WB", nama:"WATCHBAND ACULASER FOR ACULASER (NEW MODEL)", qty:0},
-{kode:"ZALA.LB", nama:"LITHIUM BATTERY FOR PICO NEW", qty:-15},
-{kode:"ZALA.LCD", nama:"LCD FOR PICO NEW", qty:25},
-{kode:"ZALA.TLDS", nama:"TRANSPARENT LENS OF DISPLAY SCREEN FOR PICO NEW", qty:24},
-{kode:"ZLPR.LCOV", nama:"LOWER CASE LUMBAR PREMIUM", qty:20},
-{kode:"ZLPR.UCOV", nama:"UPPER CASE LUMBAR PREMIUM", qty:15},
-{kode:"ZLPR.CTRL", nama:"CONTROL PCB LUMBAR PREMIUM", qty:20},
-{kode:"ZLPR.LCD", nama:"LCD SCREEN LUMBAR PREMIUM", qty:15},
-{kode:"ZLPR.MCU", nama:"MAIN PCB LUMBAR PREMIUM", qty:15},
-{kode:"ZLPR.L2A", nama:"ADAPTOR SET 2A LUMBAR PREMIUM", qty:10},
-{kode:"ZALU.BGL", nama:"BLUE GENERATING LASER FOR ACULASER", qty:15},
-{kode:"ZALU.BZ", nama:"MICRO BUZZER FOR ACULASER", qty:20},
-{kode:"ZALU.LEDB", nama:"LED BACKSCREEN FOR ACULASER", qty:20},
-{kode:"ZALU.YGL", nama:"YELLOW GENERATING LASER FOR ACULASER", qty:9},
-{kode:"ZALU.CIC", nama:"CHARGING IC FOR HJG65D", qty:19},
-{kode:"ZALU.TCS", nama:"TYPE C SOCKET FOR ACULASER", qty:20},
-{kode:"ZALD.LCBG2", nama:"LASER CIRCUIT BOARD FOR ULTIMATE G2", qty:19},
-{kode:"ZALD.LCB", nama:"LASER CIRCUIT BOARD FOR ULTIMATE", qty:20},
-{kode:"ZALD.MCBG2", nama:"MAIN CIRCUIT BOARD FOR ULTIMATE G2", qty:29},
-{kode:"ZALU.SI", nama:"SILICON INTRANASAL FOR ACULASER", qty:100},
-{kode:"ZALD.LCDG2", nama:"LCD FOR ULTIMATE G2", qty:26},
-{kode:"ZALD.PBC", nama:"PUSH BUTTON COVER FOR ULTIMATE", qty:15},
-{kode:"ZALD.PBCD2", nama:"PUSH BUTTON CASE FOR ULTIMATE G2", qty:5},
-{kode:"ZLPR.BOLT", nama:"BOLT LUMBAR PREMIUM", qty:20},
-{kode:"ZLMB.GB", nama:"GIFT BOX LUMBAR", qty:93},
-{kode:"ZLPR.GBX", nama:"GIFT BOX LUMBAR PREMIUM", qty:36},
-{kode:"ZCTD.GBX", nama:"GIFT BOX CERVICAL", qty:8},
-{kode:"ZDRS.RGL", nama:"RED GENERATING LASER FOR DR LASER SUPREME", qty:34},
-{kode:"ZALU.BOLT", nama:"BOLT FOR ACULASER", qty:20},
-{kode:"ZDRHP.GL", nama:"GENERATING LASER DR HI PLUS", qty:18},
-{kode:"ZDRU.TL1H", nama:"TRANSPARENT LENS 1 HOLES", qty:29},
-{kode:"ZDRU.TL2H", nama:"TRANSPARENT LENS 2 HOLES", qty:28},
-{kode:"ZDRU.TL4H", nama:"TRANSPARENT LENS 4 HOLES", qty:28},
-{kode:"ZALD.TLDSG2", nama:"TRANSPARENT LENS OF DISPLAY SCREEN FOR ULTIMATE G2", qty:6},
-{kode:"ZCTD.L1A", nama:"ADAPTOR SET 1A CERVICAL", qty:25},
-{kode:"ZDRPN.WCG2", nama:"WATCHCASE PERFECT 10 G2", qty:35},
-{kode:"ZDRPN.A", nama:"ADAPTOR FOR PERFECT 10 G2", qty:-2},
-{kode:"ZLMB.BP", nama:"BASE PLATE LUMBAR", qty:22},
-{kode:"ZALA.FCPF", nama:"FRON CASE PROTECTION FILM", qty:30},
-{kode:"ZDRPN.DIC", nama:"DISPLAY IC PERFECT NEW", qty:49},
-{kode:"ZDRPN.SQL", nama:"STIKER WARNING LASER", qty:50},
-{kode:"ZLMB.BZ", nama:"BUZZER LUMBAR", qty:15},
-{kode:"ZDR.CP10N", nama:"CHARGER DR LASER PERFECT 10 NEW", qty:-1},
-{kode:"ZDRS.LB", nama:"LITHIUM BATTERY 1000MAH FOR DR LASER SUPREME", qty:-1},
-{kode:"ZALD.BCTL14", nama:"BACK COVER WITH TRANSPARENT LENS 14 HOLESFOR ULTIMATE", qty:6},
-{kode:"ZALC.RC", nama:"REMOTE CONTROL", qty:-4},
+{kode:"ABC.SMC", nama:"Cooking Indicator Label Homzace Smartchef", qty:undefined},
+{kode:"ABL.SMC", nama:"Steam Vent Cap Homzace Smartchef", qty:undefined},
+{kode:"BSB.BPC", nama:"Back Panel Cusion Dr Qyu Back Support Belt", qty:undefined},
+{kode:"CP.SMC", nama:"Control PCB Homzace Smartchef", qty:undefined},
+{kode:"DPCB.SMC", nama:"Display Cover Homzace Smartchef", qty:undefined},
+{kode:"FV.SMC", nama:"Pressure Valve Homzace Smartchef", qty:undefined},
+{kode:"HT.SMC", nama:"Heating Plate Homzace Smartchef", qty:undefined},
+{kode:"INLET.SMC", nama:"Female Socket AC 220V Homzace Smartchef", qty:undefined},
+{kode:"IP.SMC", nama:"Basic Pot Homzace Smartchef", qty:undefined},
+{kode:"L-SET.SMC", nama:"Top Case Set Homzace Smartchef", qty:undefined},
+{kode:"MOTOR.APF", nama:"Motor Clea Air Purifier", qty:undefined},
+{kode:"MP.SMC", nama:"Middle Pot Homzace Smartchef", qty:undefined},
+{kode:"MSC.SMC", nama:"Main Body Ring Homzace Smartchef", qty:undefined},
+{kode:"MSSC.SMC", nama:"Stainless Cricle Middle Silicone Homzace Smartchef", qty:undefined},
+{kode:"NTC.SMC", nama:"NTC Homzace Smartchef", qty:undefined},
+{kode:"OS.SMC", nama:"Body Housing Homzace Smartchef", qty:undefined},
+{kode:"PCB.APF", nama:"Motor PCB Clea Air Purifier", qty:undefined},
+{kode:"PPCB.SMC", nama:"Power PCB Homzace Smartchef", qty:undefined},
+{kode:"PSW.SMC", nama:"Pressure Switch Homzace Smartchef", qty:undefined},
+{kode:"PWC.SMC", nama:"Power Cable Homzace Smartchef", qty:undefined},
+{kode:"SC.SMC", nama:"Top Cricle Silicone  Homzace Smarchef", qty:undefined},
+{kode:"SM.SMC", nama:"Pressure Lock Homzace Smartchef", qty:undefined},
+{kode:"SMD VR 5K1", nama:"SMD Variable Resistor 5.1K Dr Laser", qty:undefined},
+{kode:"SP.SMC", nama:"Steam Pot Homzace Smartchef", qty:undefined},
+{kode:"SPN.SMC", nama:"Spoon Homzace Smartchef", qty:undefined},
+{kode:"SSC.SMC", nama:"Stainless Steel Cricular Plate Homzace Smartchef", qty:undefined},
+{kode:"TFUSE.SMC", nama:"Thermal Fuse Homzace Smartchef", qty:undefined},
+{kode:"TOPC.VALVE.VTRC", nama:"Top Case Set Homzace Vitarice", qty:undefined},
+{kode:"WCL.SMC", nama:"Water Collector Homzace Smartchef", qty:undefined},
+{kode:"ZALA.BCTL10", nama:"Back Case Set Aculaser Pico", qty:undefined},
+{kode:"ZALA.DRI", nama:"Display IC Aculaser Pico", qty:undefined},
+{kode:"ZALA.FCB", nama:"Front Case Aculaser Pico", qty:undefined},
+{kode:"ZALA.LB", nama:"Lithium Battery (1000mAh) Aculaser Pico", qty:undefined},
+{kode:"ZALA.LCB", nama:"Laser PCB Aculaser Pico", qty:undefined},
+{kode:"ZALA.LCD", nama:"LCD Aculaser Pico", qty:undefined},
+{kode:"ZALA.MCB", nama:"Main PCB Aculaser Pico", qty:undefined},
+{kode:"ZALA.PCB", nama:"Button Aculaser Pico", qty:undefined},
+{kode:"ZALA.SLED", nama:"LCD Light Guide Plate Aculaser Pico", qty:undefined},
+{kode:"ZALA.SMDP", nama:"SMD Button (4x3x1.5) Aculaser Pico", qty:undefined},
+{kode:"ZALA.TLDS", nama:"Display Cover Aculaser Pico", qty:undefined},
+{kode:"ZALC.CIC", nama:"Charging IC Aculaser Evo", qty:undefined},
+{kode:"ZALC.LB", nama:"Lithium Battery (2000mAh) Aculaser Evo", qty:undefined},
+{kode:"ZALC.RC", nama:"Remote Control Set Aculaser Evo", qty:undefined},
+{kode:"ZALD.BCTL14", nama:"Back Case Set Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.FCB", nama:"Front Case Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.FCBG2", nama:"Front Case Aculaser Ultimate G2", qty:undefined},
+{kode:"ZALD.LB", nama:"Lithium Battery (1800mAh) Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.LCB", nama:"Laser PCB Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.LCBG2", nama:"Laser PCB Aculaser Ultimate G2", qty:undefined},
+{kode:"ZALD.LCD", nama:"LCD Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.LCDG2", nama:"LCD Aculaser Ultimate G2", qty:undefined},
+{kode:"ZALD.LH", nama:"Laser Heatsink Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.MCB", nama:"Main PCB Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.MCBG2", nama:"Main PCB Aculaser Ultimate G2", qty:undefined},
+{kode:"ZALD.PBC", nama:"Button Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.PBCD2", nama:"Button Aculaser Ultimate G2", qty:undefined},
+{kode:"ZALD.SLED", nama:"LCD Light Guide Plate Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.SMDP", nama:"SMD Button (5x5x3) Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.SMDPG2", nama:"SMD Button (5x3x3) Aculaser Ultimate G2", qty:undefined},
+{kode:"ZALD.TLDSG1", nama:"Display Cover Aculaser Ultimate", qty:undefined},
+{kode:"ZALD.TLDSG2", nama:"Display Cover Aculaser Ultimate G2", qty:undefined},
+{kode:"ZALP.BCTL10", nama:"Back Case Set Aculaser Premium", qty:undefined},
+{kode:"ZALP.MCB", nama:"Main PCB Aculaser Premium", qty:undefined},
+{kode:"ZALU.A", nama:"Charging Adapter 5V 1A Aculaser", qty:undefined},
+{kode:"ZALU.BGL", nama:"Blue Generating Laser Aculaser", qty:undefined},
+{kode:"ZALU.BOLT", nama:"Body Screw Aculaser", qty:undefined},
+{kode:"ZALU.BZ", nama:"SMD Buzzer Aculaser", qty:undefined},
+{kode:"ZALU.EMSS", nama:"EMS Socket Aculaser", qty:undefined},
+{kode:"ZALU.LEDB", nama:"Backlight LED Aculaser", qty:undefined},
+{kode:"ZALU.N", nama:"Needle Pin Aculaser", qty:undefined},
+{kode:"ZALU.PCC", nama:"Pain Probe Cable Type C Aculaser", qty:undefined},
+{kode:"ZALU.PI", nama:"SMD Power Inductor 2.2mH Aculaser", qty:undefined},
+{kode:"ZALU.RGL", nama:"Red Generating Laser Aculaser", qty:undefined},
+{kode:"ZALU.SI", nama:"Silicone Nasal Cap Aculaser", qty:undefined},
+{kode:"ZALU.SIC", nama:"Laser Mosfet IC Aculaser", qty:undefined},
+{kode:"ZALU.SMDT", nama:"SMD Transistor Aculaser", qty:undefined},
+{kode:"ZALU.TCS", nama:"Female Socket Type C 12P Aculaser", qty:undefined},
+{kode:"ZALU.USBC", nama:"Charging Cable Type C Aculaser", qty:undefined},
+{kode:"ZALU.VRIC", nama:"Voltage Regulator IC Aculaser", qty:undefined},
+{kode:"ZALU.WB", nama:"Watch Band Aculaser", qty:undefined},
+{kode:"ZALU.YGL", nama:"Yellow Generating laser Aculaser", qty:undefined},
+{kode:"ZAPF.CAP", nama:"Fan Start Capacitor Clea Air Purifier", qty:undefined},
+{kode:"ZAPF.CB", nama:"Control PCB Clea Air Purifier", qty:undefined},
+{kode:"ZAPF.DB", nama:"Display PCB Clea Air Purifier", qty:undefined},
+{kode:"ZAPF.ION", nama:"Ionizer PCB Clea Air Purifier", qty:undefined},
+{kode:"ZAPF.PCH", nama:"Power Cable Clea Air Purifier", qty:undefined},
+{kode:"ZAPF.RB", nama:"Power PCB Clea Air Purifier", qty:undefined},
+{kode:"ZAPF.UVL", nama:"UV Lamp Clea Air Purifier", qty:undefined},
+{kode:"ZCTD.ABT", nama:"Airbag Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.APUMP", nama:"Air Pump Motor Dr Qyu", qty:undefined},
+{kode:"ZCTD.CC8P", nama:"Remote Cable 8 Pin Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.CLIST", nama:"Remote List Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.CLOW", nama:"Remote Bottom Case Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.CRB", nama:"Remote Button Pad Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.CUP", nama:"Remote Top Case Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.DC12", nama:"Female DC Socket 5.5x2.1 Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.FLC", nama:"Flash LED Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.L1A", nama:"Power Adapter 12V 1A Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.LCD", nama:"Remote LCD Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.LCOV", nama:"Bottom Case Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.MPL", nama:"Neck EMS Conductor Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.NP", nama:"Neck Pad Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.PVL", nama:"Air Pump Tube Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.RCB", nama:"Remote PCB Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.SFM", nama:"Neck Support Frame Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZCTD.UCOV", nama:"Top Case Dr Qyu Cervical Traction", qty:undefined},
+{kode:"ZDR.BT", nama:"Button Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDR.CCI", nama:"Female Socket 3.5mm 5P Dr Laser", qty:undefined},
+{kode:"ZDR.CP10N", nama:"Charger Set Mini USB Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDR.ICP10N", nama:"Charging IC Dr Laser", qty:undefined},
+{kode:"ZDR.JI", nama:"Male Jack 3.5mm Dr Laser", qty:undefined},
+{kode:"ZDR.LCDP10", nama:"LCD Dr Laser Perfect 10", qty:undefined},
+{kode:"ZDR.LCDP10N", nama:"LCD Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDR.MBP10", nama:"Main PCB Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDR.SCP10N", nama:"Female Socket Mini USB Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDR.SLP10", nama:"Silicone Nasal Cap Dr Laser", qty:undefined},
+{kode:"ZDR.WBP10N", nama:"Watch Band Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDR03.LWL", nama:"Watch Band With Hole (Leather) Dr Laser Therapeutic", qty:undefined},
+{kode:"ZDR03.LWP", nama:"Watch Band With Buckle (Leather) Dr Laser Therapeutic", qty:undefined},
+{kode:"ZDR04.TNW", nama:"Needle Pin Dr Laser Therapeutic", qty:undefined},
+{kode:"ZDRHP.BC", nama:"Button Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.CCMA", nama:"Main PCB Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.CNEW", nama:"Charger Set 2.5mm Jack Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.CUHP", nama:"Charging Cable 2.5mm Jack Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.GL", nama:"Red Generating Laser Dr Laser", qty:undefined},
+{kode:"ZDRHP.ICLM", nama:"Comparator IC Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.LB", nama:"Lithium Battery (700mAh) Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.LCD", nama:"LCD Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.LPCB", nama:"Laser PCB Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.R", nama:"Laser Mosfet IC Dr Laser", qty:undefined},
+{kode:"ZDRHP.SCHP", nama:"Female Socket 2.5mm Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.SLS", nama:"LCD Light Guide Plate Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.TDLS", nama:"Display Cover Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.TN", nama:"Needle Pin Dr Laser", qty:undefined},
+{kode:"ZDRHP.TRQ1", nama:"SMD Transistor Dr Laser", qty:undefined},
+{kode:"ZDRHP.WB", nama:"Watch Band Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRHP.WC", nama:"Watch Case Set Dr Laser Hi Plus", qty:undefined},
+{kode:"ZDRP10+.GLB", nama:"Blue Generating Laser Dr Laser", qty:undefined},
+{kode:"ZDRP10+.GLY", nama:"Yellow Generating laser Dr Laser", qty:undefined},
+{kode:"ZDRPB.CB", nama:"Charging PCB Dr Laser Painbox", qty:undefined},
+{kode:"ZDRPB.HP", nama:"Laser Heatsink Dr Laser Painbox", qty:undefined},
+{kode:"ZDRPB.LB", nama:"Lithium Battery (3100mAh) Dr Laser Painbox", qty:undefined},
+{kode:"ZDRPB.MB", nama:"Main PCB Dr Laser Painbox", qty:undefined},
+{kode:"ZDRPC.BC", nama:"Button Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.BZ", nama:"Buzzer Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.CIB", nama:"Black Nasal Cable Male Jack 3.5mm Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.CP", nama:"Charger Set Micro USB Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.LCB", nama:"Laser PCB Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.LCD", nama:"LCD Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.MBCD", nama:"Main PCB Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.PB", nama:"SMD Button (5x5x1.5) Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.SC", nama:"Female Socket Micro USB Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.SI", nama:"Female Socket 3.5mm 4P Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.SLB", nama:"LCD Light Guide Plate Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.WB", nama:"Watch Band Dr Laser Pico", qty:undefined},
+{kode:"ZDRPC.WC", nama:"Watch Case Set Dr Laser Pico", qty:undefined},
+{kode:"ZDRPN.A", nama:"Charging Adapter 5V 1A Dr Laser", qty:undefined},
+{kode:"ZDRPN.CIWG2", nama:"White Nasal Cable Male Type C Dr Laser", qty:undefined},
+{kode:"ZDRPN.LB", nama:"Lithium Battery (1600mAh) Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDRPN.LPCB", nama:"Laser PCB Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDRPN.MCBG2", nama:"Main PCB Dr Laser Perfect 10 Plus G2", qty:undefined},
+{kode:"ZDRPN.NAA", nama:"Aux To Type C Nasal Adapter Dr Laser", qty:undefined},
+{kode:"ZDRPN.SLB", nama:"LCD Light Guide Plate Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDRPN.TCS", nama:"Female Socket Type C 6P Dr Laser Perfect 10 Plus G2", qty:undefined},
+{kode:"ZDRPN.TLDS", nama:"Display Cover Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDRPN.USBC", nama:"Charging Cable Type C Dr Laser", qty:undefined},
+{kode:"ZDRPN.WC", nama:"Watch Case Set Dr Laser Perfect 10 New", qty:undefined},
+{kode:"ZDRPN.WCG2", nama:"Watch Case Set Dr Laser Perfect 10 Plus G2", qty:undefined},
+{kode:"ZDRS.FFC", nama:"Flat Flexible Cable Dr Laser Supreme", qty:undefined},
+{kode:"ZDRS.LB", nama:"Lithium Battery (1000mAh) Dr Laser Supreme", qty:undefined},
+{kode:"ZDRS.NFH", nama:"Needle Pin Dr Laser Supreme", qty:undefined},
+{kode:"ZDRS.WB", nama:"Watch Band Dr Laser Supreme", qty:undefined},
+{kode:"ZDRU.BLT", nama:"Body Screw Dr Laser", qty:undefined},
+{kode:"ZDRU.CAP", nama:"SMD Capacitor Dr Laser", qty:undefined},
+{kode:"ZDRU.CIW", nama:"White Nasal Cable Male Jack 3.5mm Dr Laser", qty:undefined},
+{kode:"ZDRU.PBS", nama:"SMD Button (6x6x2.5) Dr Laser", qty:undefined},
+{kode:"ZDRU.TL1H", nama:"Laser Cover 1 Hole Dr Laser", qty:undefined},
+{kode:"ZDRU.TL2H", nama:"Laser Cover 2 Hole Dr Laser", qty:undefined},
+{kode:"ZDRU.TL4H", nama:"Laser Cover 4 Hole Dr Laser", qty:undefined},
+{kode:"ZHVC.BP", nama:"Basic Pot Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.CABLE", nama:"Power Cable Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.CP", nama:"Control PCB Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.F", nama:"Fuse Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.HP", nama:"Heating Plate Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.INB", nama:"Inner Body Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.MCB", nama:"Power PCB Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.PSB", nama:"Power PCB Box Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.SFBP", nama:"Bottom Temperature Sensor Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.SMT", nama:"Steam Valve Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.SPSH", nama:"Steam Pot Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.TC", nama:"Top Temperature Sensor Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.TP", nama:"Top Case Homzace Vitacook", qty:undefined},
+{kode:"ZHVC.WRC", nama:"Water Collector Homzace Vitacook", qty:undefined},
+{kode:"ZHVC2.WC", nama:"Water Collector Homzace Vitacook G2", qty:undefined},
+{kode:"ZLMB.ABP", nama:"Airbag Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.ADTR", nama:"Power Adapter 12V 2A Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.AP", nama:"Air Pump Motor Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.APMC", nama:"Air Pump Motor Cover Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.CB", nama:"Main PCB Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.DCB", nama:"Female DC Socket 5.5x2.1 Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.EHF", nama:"Heating Film Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.HCR", nama:"Remote Set Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.LCV", nama:"Bottom Case Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.MCV", nama:"Motor Cover Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.MLD", nama:"Body List Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.MTR", nama:"Motor Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.PCC", nama:"LED Blocking Cover Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.PLBB", nama:"LED Transparent Cover Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.PPSV", nama:"Solenoid Valve Cover Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.SBP", nama:"Remote Button Pad Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.SCR", nama:"Body Screw Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.SVL", nama:"Solenoid Valve Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.TMR", nama:"NTC Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLMB.UCV", nama:"Top Case Dr Qyu Lumbar Traction", qty:undefined},
+{kode:"ZLPR.ABT", nama:"Airbag Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.BLC", nama:"LED Blocking Cover Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.BOLT", nama:"Body Screw Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.CC10P", nama:"Remote Cable 10 Pin Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.CLOW", nama:"Remote Bottom Case Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.CTRL", nama:"Remote PCB Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.CUP", nama:"Remote Top Case Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.DC12", nama:"Female DC Socket 5.5x2.1 Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.EMS", nama:"EMS Pads Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.HEAT", nama:"Heating Film Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.L2A", nama:"Power Adapter 12V 2A Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.LCD", nama:"Remote LCD Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.LCOV", nama:"Bottom Case Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.MCU", nama:"Main PCB Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.MVB", nama:"Motor Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.NTC", nama:"NTC Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.PUMP", nama:"Air Pump Motor Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.SLED", nama:"Backlight Plate Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.TGC", nama:"Top Gold Case Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZLPR.UCOV", nama:"Top Case Dr Qyu Lumbar Traction Premium", qty:undefined},
+{kode:"ZNCHEF.SR", nama:"Top Cover Silicone Homzace Smartchef", qty:undefined},
+{kode:"ZVT6.DRC", nama:"Bottom Temperature Sensor Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.HP", nama:"Heating Plate Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.IP", nama:"Basic Pot Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.MCB", nama:"Control PCB Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.PC", nama:"Power Cable Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.PSUB", nama:"Power PCB Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.TC", nama:"Top Case Set Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.TMF", nama:"Thermal Fuse Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.UPS", nama:"Top Temperature Sensor Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.VENT", nama:"Steam Valve Homzace Vitarice T6", qty:undefined},
+{kode:"ZVT6.WB", nama:"Water Collector Homzace Vitarice T6", qty:undefined},
+{kode:"ZVTR.CPCB", nama:"Control PCB Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.DC", nama:"Water Collector Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.FUSE", nama:"Fuse Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.HOS", nama:"Steam Pot Handle Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.HP", nama:"Heating Plate Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.IP", nama:"Basic Pot Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.PC", nama:"Power Cable Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.PPCB", nama:"Power PCB Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.STEAMER", nama:"Steam Pot Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.SV", nama:"Steam Valve Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.TS", nama:"Bottom Temperature Sensor Homzace Vitarice", qty:undefined},
+{kode:"ZVTR.TTS", nama:"Top Temperature Sensor Homzace Vitarice", qty:undefined},
 ];
 
 
@@ -236,7 +413,7 @@ spareparts.forEach((sp, index)=>{
      <td>${index+1}</td>
      <td>${sp.kode}</td>
      <td>${sp.nama}</td>
-     <td>${sp.area}</td>
+     <td>${sp.qty}</td>
    </tr>
  `;
 
