@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STOK SPAREPART</title>
+
+<link rel="icon" type="image/png" href="VRM.png">
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+body{
+    font-family:'Montserrat',sans-serif;
+    background:url('bgweb.png') no-repeat center center fixed;
+    background-size:cover;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* ===== MAIN BOX ===== */
+.main-box{
+    background:rgba(255,255,255,0.08);
+    padding:25px 35px;
+    border-radius:15px;
+    max-width:1100px;
+    margin:auto;
+
+    box-shadow:
+        0 8px 20px rgba(255,0,0,0.35),
+        0 0 35px rgba(106,13,173,0.6);
+}
+
+/* ===== TITLE ===== */
+h1{
+    font-weight:700;
+}
+
+/* ===== SEARCH ===== */
+#searchBox{
+    padding:10px;
+    width:90%;
+    max-width:300px;
+    border-radius:6px;
+    border:none;
+    margin-bottom:20px;
+}
+
+/* ===== TABLE ===== */
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:rgba(255,255,255,0.9);
+    color:#222;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+thead{
+    background:#6a0dad;
+    color:white;
+}
+
+th,td{
+    padding:12px;
+    text-align:left;
+}
+
+tbody tr{
+    transition:0.25s;
+}
+
+tbody tr:nth-child(even){
+    background:#f5f0ff;
+}
+
+tbody tr:hover{
+    background:#e6d9ff;
+    transform:scale(1.01);
+}
+
+/* ===== BUTTON ===== */
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#6a0dad;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    box-shadow:0 6px #4b0082;
+}
+
+.btn:hover{
+    background:#7d27c1;
+    transform:scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+    .main-box{
+        padding:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="main-box">
+
+<h1>📦 DATA STOK TEKNISI</h1>
+
+<input type="text" id="searchBox" placeholder="Cari sparepart...">
+
+<div class="table-wrapper">
+
+<table id="stokTable">
+<thead>
+<tr>
+<th>NO</th>
+<th>KODE SPAREPART</th>
+<th>NAMA SPAREPART</th>
+<th>QTY</th>
+</tr>
+</thead>
+
+<tbody id="stokBody"></tbody>
+</table>
+
+</div>
+
+<a href="index.html" class="btn">⬅ Kembali</a>
+
+</div>
+
+<script>
+
+/* ===== DATA SPAREPART ===== */
+const spareparts = [
+{kode:"ZDRHP.LB", nama:"LITHIUM BATTERY DR HI PLUS", qty:9},
+{kode:"ZDRU.CIW", nama:"CABLE INTRANASAL WHITE", qty:20},
+{kode:"ZDRHP.R", nama:"RESISTANCE HI PLUS", qty:30},
+{kode:"ZDRHP.LPCB", nama:"LASER BOARD FOR HI-PLUS", qty:63},
+{kode:"ZDRHP.TDLS", nama:"TRANSPARANT LENS OF DISPLAY SCREEN OF HI-PLUS", qty:25},
+{kode:"ZDRHP.CNEW", nama:"CHARGER + USB CABLE DR LASER HIPLUS NEW", qty:-1},
+{kode:"ZDRPN.SLB", nama:"STICKY LED FOR PERFECT 10", qty:19},
+{kode:"ZDR.BTP10", nama:"BUTTON DR LASER PERFECT 10", qty:23},
+{kode:"ZDRL.C47UF", nama:"ELEKTROLIT CONDENSATOR 47UF", qty:8},
+{kode:"ZDRHP.TN", nama:"THE NEEDLE DR HI PLUS", qty:10},
+{kode:"ZDRPN.LPCB", nama:"LASER BOARD FOR PERFECT 10", qty:9},
+{kode:"ZDR.MBP10", nama:"MAIN BOARD (MESIN UTAMA/MESIN A) DR LASER PERFECT 10", qty:30},
+{kode:"ZDR.LCDP10N", nama:"LCD DR LASER PERFECT 10 NEW", qty:20},
+{kode:"ZDRPN.LB", nama:"LITHIUM BATTERY DR LASER PERFECT 10 NEW", qty:24},
+{kode:"ZDRPN.TLDS", nama:"TRANSPARANT LENS OF DISPLAY SCREEN", qty:48},
+{kode:"ZDRS.SFS", nama:"SCREW FOR DR LASER SUPREME", qty:100},
+{kode:"ZDRS.USBC", nama:"USB CABLE TYPE C FOR DR LASER SUPREME", qty:9},
+{kode:"ZDRS.A", nama:"ADAPTOR FOR DR LASER SUPREME", qty:8},
+{kode:"ZLMB.ADTR", nama:"ADAPTOR FOR LUMBAR", qty:9},
+{kode:"ZDRS.LCB", nama:"LASER CIRUIT BOARD FOR DR LASER SUPREME", qty:20},
+{kode:"ZDRS.MCB", nama:"MAIN CIRCUIT BOARD FOR DR LASER SUPREME", qty:9},
+{kode:"ZDRS.SPB", nama:"SMD PUSH BUTTON FOR DR LASER SUPREME", qty:8},
+{kode:"ZCTD.CLIST", nama:"CONTROL LIST CERVICAL", qty:10},
+{kode:"ZCTD.CRB", nama:"CONTROL RUBBER BUTTON CERVICAL", qty:10},
+{kode:"ZCTD.SFM", nama:"SUPPORT FRAME CERVICAL", qty:3},
+{kode:"ZCTD.UCOV", nama:"UPPER CASE CERVICAL", qty:3},
+{kode:"ZALD.LB", nama:"LITHIUM BATTERY FOR ULTIMATE", qty:10},
+{kode:"ZALU.A", nama:"ADAPTOR FOR ACULASER", qty:28},
+{kode:"ZALU.USBC", nama:"USB CABLE C TYPE FOR ACULASER", qty:0},
+{kode:"ZALU.WB", nama:"WATCHBAND ACULASER FOR ACULASER (NEW MODEL)", qty:0},
+{kode:"ZALA.LB", nama:"LITHIUM BATTERY FOR PICO NEW", qty:-15},
+{kode:"ZALA.LCD", nama:"LCD FOR PICO NEW", qty:25},
+{kode:"ZALA.TLDS", nama:"TRANSPARENT LENS OF DISPLAY SCREEN FOR PICO NEW", qty:24},
+{kode:"ZLPR.LCOV", nama:"LOWER CASE LUMBAR PREMIUM", qty:20},
+{kode:"ZLPR.UCOV", nama:"UPPER CASE LUMBAR PREMIUM", qty:15},
+{kode:"ZLPR.CTRL", nama:"CONTROL PCB LUMBAR PREMIUM", qty:20},
+{kode:"ZLPR.LCD", nama:"LCD SCREEN LUMBAR PREMIUM", qty:15},
+{kode:"ZLPR.MCU", nama:"MAIN PCB LUMBAR PREMIUM", qty:15},
+{kode:"ZLPR.L2A", nama:"ADAPTOR SET 2A LUMBAR PREMIUM", qty:10},
+{kode:"ZALU.BGL", nama:"BLUE GENERATING LASER FOR ACULASER", qty:15},
+{kode:"ZALU.BZ", nama:"MICRO BUZZER FOR ACULASER", qty:20},
+{kode:"ZALU.LEDB", nama:"LED BACKSCREEN FOR ACULASER", qty:20},
+{kode:"ZALU.YGL", nama:"YELLOW GENERATING LASER FOR ACULASER", qty:9},
+{kode:"ZALU.CIC", nama:"CHARGING IC FOR HJG65D", qty:19},
+{kode:"ZALU.TCS", nama:"TYPE C SOCKET FOR ACULASER", qty:20},
+{kode:"ZALD.LCBG2", nama:"LASER CIRCUIT BOARD FOR ULTIMATE G2", qty:19},
+{kode:"ZALD.LCB", nama:"LASER CIRCUIT BOARD FOR ULTIMATE", qty:20},
+{kode:"ZALD.MCBG2", nama:"MAIN CIRCUIT BOARD FOR ULTIMATE G2", qty:29},
+{kode:"ZALU.SI", nama:"SILICON INTRANASAL FOR ACULASER", qty:100},
+{kode:"ZALD.LCDG2", nama:"LCD FOR ULTIMATE G2", qty:26},
+{kode:"ZALD.PBC", nama:"PUSH BUTTON COVER FOR ULTIMATE", qty:15},
+{kode:"ZALD.PBCD2", nama:"PUSH BUTTON CASE FOR ULTIMATE G2", qty:5},
+{kode:"ZLPR.BOLT", nama:"BOLT LUMBAR PREMIUM", qty:20},
+{kode:"ZLMB.GB", nama:"GIFT BOX LUMBAR", qty:93},
+{kode:"ZLPR.GBX", nama:"GIFT BOX LUMBAR PREMIUM", qty:36},
+{kode:"ZCTD.GBX", nama:"GIFT BOX CERVICAL", qty:8},
+{kode:"ZDRS.RGL", nama:"RED GENERATING LASER FOR DR LASER SUPREME", qty:34},
+{kode:"ZALU.BOLT", nama:"BOLT FOR ACULASER", qty:20},
+{kode:"ZDRHP.GL", nama:"GENERATING LASER DR HI PLUS", qty:18},
+{kode:"ZDRU.TL1H", nama:"TRANSPARENT LENS 1 HOLES", qty:29},
+{kode:"ZDRU.TL2H", nama:"TRANSPARENT LENS 2 HOLES", qty:28},
+{kode:"ZDRU.TL4H", nama:"TRANSPARENT LENS 4 HOLES", qty:28},
+{kode:"ZALD.TLDSG2", nama:"TRANSPARENT LENS OF DISPLAY SCREEN FOR ULTIMATE G2", qty:6},
+{kode:"ZCTD.L1A", nama:"ADAPTOR SET 1A CERVICAL", qty:25},
+{kode:"ZDRPN.WCG2", nama:"WATCHCASE PERFECT 10 G2", qty:35},
+{kode:"ZDRPN.A", nama:"ADAPTOR FOR PERFECT 10 G2", qty:-2},
+{kode:"ZLMB.BP", nama:"BASE PLATE LUMBAR", qty:22},
+{kode:"ZALA.FCPF", nama:"FRON CASE PROTECTION FILM", qty:30},
+{kode:"ZDRPN.DIC", nama:"DISPLAY IC PERFECT NEW", qty:49},
+{kode:"ZDRPN.SQL", nama:"STIKER WARNING LASER", qty:50},
+{kode:"ZLMB.BZ", nama:"BUZZER LUMBAR", qty:15},
+{kode:"ZDR.CP10N", nama:"CHARGER DR LASER PERFECT 10 NEW", qty:-1},
+{kode:"ZDRS.LB", nama:"LITHIUM BATTERY 1000MAH FOR DR LASER SUPREME", qty:-1},
+{kode:"ZALD.BCTL14", nama:"BACK COVER WITH TRANSPARENT LENS 14 HOLESFOR ULTIMATE", qty:6},
+{kode:"ZALC.RC", nama:"REMOTE CONTROL", qty:-4},
+];
+
+
+/* ===== TAMPILKAN DATA ===== */
+const tbody = document.getElementById("stokBody");
+
+spareparts.forEach((sp, index)=>{
+
+ tbody.innerHTML += `
+   <tr>
+     <td>${index+1}</td>
+     <td>${sp.kode}</td>
+     <td>${sp.nama}</td>
+     <td>${sp.qty}</td>
+   </tr>
+ `;
+
+});
+
+
+/* ===== SEARCH TABLE ===== */
+document.getElementById("searchBox").addEventListener("input", function(){
+
+ let filter = this.value.toLowerCase();
+ let rows = document.querySelectorAll("#stokBody tr");
+
+ rows.forEach(row=>{
+     let text = row.textContent.toLowerCase();
+     row.style.display = text.includes(filter) ? "" : "none";
+ });
+
+});
+
+</script>
+
+</body>
+</html>
