@@ -131,7 +131,7 @@ tbody tr:hover{
 <th>NO</th>
 <th>KODE SPAREPART</th>
 <th>NAMA SPAREPART</th>
-<th>QTY</th>
+<th>AREA</th>
 </tr>
 </thead>
 
@@ -142,7 +142,7 @@ tbody tr:hover{
 
 /* ===== DATA SPAREPART ===== */
 const spareparts = [
-{kode:"ABC.SMC", nama:"Cooking Indicator Label Homzace Smartchef", qty:undefined},
+{kode:"ABC.SMC", nama:"Cooking Indicator Label Homzace Smartchef", qty:2},
 {kode:"ABL.SMC", nama:"Steam Vent Cap Homzace Smartchef", qty:undefined},
 {kode:"BSB.BPC", nama:"Back Panel Cusion Dr Qyu Back Support Belt", qty:undefined},
 {kode:"CP.SMC", nama:"Control PCB Homzace Smartchef", qty:undefined},
@@ -413,7 +413,7 @@ spareparts.forEach((sp, index)=>{
      <td>${index+1}</td>
      <td>${sp.kode}</td>
      <td>${sp.nama}</td>
-     <td>${sp.qty}</td>
+     <td>${sp.area}</td>
    </tr>
  `;
 
